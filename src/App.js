@@ -33,7 +33,7 @@ const App = () => {
      */
     const newPosts = posts.map((post) => {
       if (post.Id === postId) {
-        return { ...post, likes: likes.value + 1 };
+        return { ...post, likes: post.likes + 1 };
       } else {
         return post;
       }
@@ -45,8 +45,8 @@ const App = () => {
     <div className="App">
       {/* Add SearchBar and Posts here to render them */}
       {/* Check the implementation of each component, to see what props they require, if any! */}
-      <Posts likePost={likePost} />
       <SearchBar />
+      <Posts likePost={likePost} posts={posts} />
     </div>
   );
 };
