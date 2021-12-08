@@ -1,20 +1,32 @@
 // You do not need to change any code in this file for MVP
 import React from "react";
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faInstagram } from '@fortawesome/free-brands-svg-icons';
-import { faHeart, faCircle, faCompass } from '@fortawesome/free-regular-svg-icons';
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faInstagram } from "@fortawesome/free-brands-svg-icons";
+import {
+  faHeart,
+  faCircle,
+  faCompass,
+} from "@fortawesome/free-regular-svg-icons";
 import "./SearchBar.css";
 
-const SearchBar = (props) => {
+const SearchBar = ({ searchTerm, searchFor, handleSearch }) => {
   return (
     <div className="search-bar-wrapper">
       <div className="social">
         <FontAwesomeIcon icon={faInstagram} />
       </div>
-      <form className="search-form">
+      <form
+        className="search-form"
+        onSubmit={(e) => {
+          e.preventDefault();
+          handleSearch();
+        }}
+      >
         <input
           type="text"
           placeholder="Search"
+          onChange={searchFor}
+          value={searchTerm}
         />
       </form>
       <div className="social-wrapper">
