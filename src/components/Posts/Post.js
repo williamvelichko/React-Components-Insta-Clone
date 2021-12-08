@@ -6,26 +6,16 @@ import PostHeader from "./PostHeader";
 const Post = (props) => {
   // 🔥 Make sure the parent of Post is passing the right props!
   const { post, likePost } = props;
-  const like = () => {
-    return likePost(post.id);
-  };
+
   return (
     <div className="post-border">
-      <PostHeader
-        username={props.post.username}
-        thumbnailUrl={props.post.thumbnailUrl}
-      />
+      <PostHeader username={post.username} thumbnailUrl={post.thumbnailUrl} />
       <div className="post-image-wrapper">
-        <img
-          alt="post thumbnail"
-          className="post-image"
-          src={props.post.imageUrl}
-        />
+        <img alt="post thumbnail" className="post-image" src={post.imageUrl} />
       </div>
       {/* Is LikeSection getting all the props it needs to work correctly? */}
       <LikeSection
-        // likePost={() => likePost(post.id)}
-        likePost={like}
+        likePost={() => likePost(post.id)}
         numberOfLikes={post.likes}
       />
       {/* Comments also wants its props! */}
